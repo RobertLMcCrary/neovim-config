@@ -7,6 +7,7 @@ return {
     },
     config = function()
         require("mason").setup()
+
         require("mason-lspconfig").setup({
             ensure_installed = { "gopls", "lua_ls", "rust_analyzer", "ts_ls" },
             automatic_installation = true,
@@ -20,29 +21,4 @@ return {
         -- add others if desired
     end,
 }
-
-
---[[
-return {
-    "mason-org/mason-lspconfig.nvim",
-    opts = {
-        ensure_installed = { 
-            "lua_ls",
-            "rust_analyzer",
-            "gopls",
-            "ts_ls"
-        },
-        automatic_enable = {
-            "lua_ls",
-            "gopls",
-            "ts_ls"
-        }
-    },
-    dependencies = {
-        { "mason-org/mason.nvim", opts = {} },
-        "neovim/nvim-lspconfig",
-    },
-}
---]]
-
 

@@ -17,7 +17,8 @@ local opts = { noremap = true, silent = true }
 
 -- EXIT INSERT MODE WITH 'jk'
 vim.keymap.set("i", "jk", "<Esc>", opts)
-vim.keymap.set("n", "<leader>E", ":Ex<CR>")
+-- OPEN NETRW WITH "leader E"
+--vim.keymap.set("n", "<leader>E", ":Ex<CR>")
 
 -- TELESCOPE
 local builtin = require('telescope.builtin')
@@ -39,7 +40,7 @@ vim.keymap.set("n", "<S-h>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<S-l>", function() harpoon:list():next() end)
 
 -- NEOTREE
--- have not found good setup for file tree yet
+vim.keymap.set("n", "<leader>E", ":Neotree filesystem reveal toggle<CR>", { desc = "Toggle Neotree" })
 
 -- LSP Keymaps
 -- LSP Keymaps (put this AFTER your plugin specs)
