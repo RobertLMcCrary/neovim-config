@@ -18,6 +18,9 @@ vim.opt.breakindent = true
 vim.opt.sidescroll = 1
 vim.opt.list = false
 
+--clipboard
+vim.opt.clipboard = "unnamedplus"
+
 --showing error and warning icons and text
 local signs = {
     Error = "󰅚",
@@ -32,9 +35,8 @@ for type, icon in pairs(signs) do
 end
 
 vim.diagnostic.config({
-  virtual_text = {
-    spacing = 4,
-    prefix = "●",
-  },
+    virtual_text = {
+        spacing = 4,
+        prefix = "●",
+    },
 })
-
