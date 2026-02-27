@@ -40,7 +40,7 @@ vim.keymap.set("n", "<S-h>", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<S-l>", function() harpoon:list():next() end)
 
 -- NEOTREE
-vim.keymap.set("n", "<leader>E", ":Neotree filesystem reveal toggle<CR>", { desc = "Toggle Neotree" })
+vim.keymap.set("n", "<leader>g", ":Neotree filesystem reveal toggle<CR>", { desc = "Toggle Neotree" })
 
 -- LSP Keymaps
 -- LSP Keymaps (put this AFTER your plugin specs)
