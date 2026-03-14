@@ -7,6 +7,20 @@ return {
             "MunifTanjim/nui.nvim",
             "nvim-tree/nvim-web-devicons", -- optional, but recommended
         },
-        lazy = false, -- neo-tree will lazily load itself
+        lazy = false,                      -- neo-tree will lazily load itself
+        config = function()
+            require("neo-tree").setup({
+                filesystem = {
+                    filtered_items = {
+                        visible = true,
+                        hide_dotfiles = false,
+                        hide_gitignored = false,
+                        hide_hidden = false,
+                    },
+                },
+            })
+
+            vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", {})
+        end,
     }
 }

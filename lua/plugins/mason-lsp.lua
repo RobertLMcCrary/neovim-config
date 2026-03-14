@@ -7,8 +7,17 @@ return {
     },
     config = function()
         require("mason").setup()
+
         require("mason-lspconfig").setup({
-            ensure_installed = { "gopls", "lua_ls", "rust_analyzer", "ts_ls" },
+            ensure_installed = {
+                "gopls",
+                "lua_ls",
+                "rust_analyzer",
+                "ts_ls",
+                "svelte",
+                "html",
+                "cssls",
+            },
             automatic_installation = true,
         })
     end,

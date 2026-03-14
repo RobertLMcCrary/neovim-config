@@ -1,5 +1,5 @@
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.guicursor = "a:block"
 --vim.opt.number = false
@@ -23,20 +23,20 @@ vim.opt.clipboard = "unnamedplus"
 
 --showing error and warning icons and text
 local signs = {
-  Error = "󰅚",
-  Warn  = "󰀪",
-  Hint  = "󰌶",
-  Info  = "󰄬",
+    Error = "󰅚",
+    Warn  = "󰀪",
+    Hint  = "󰌶",
+    Info  = "󰄬",
 }
 
 for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
 vim.diagnostic.config({
-  virtual_text = {
-    spacing = 4,
-    prefix = "●",
-  },
+    virtual_text = {
+        spacing = 4,
+        prefix = "●",
+    },
 })
