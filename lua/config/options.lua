@@ -2,8 +2,6 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.guicursor = "a:block"
---vim.opt.number = false
---vim.opt.relativenumber = false
 vim.g.lazyvim_rust_diagnostics = false
 vim.lsp.inlay_hint.enable(false)
 
