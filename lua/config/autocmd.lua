@@ -10,10 +10,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 vim.api.nvim_create_autocmd("BufWritePre", {
     callback = function(args)
-        vim.lsp.buf.format({
-            bufnr = args.buf,
-            async = false,
-        })
+        local ok, conform = pcall(require, "conform")
+        if ok then
+            conform.format({ bufnr = args.buf, async = true, lsp_fallback = true })
+        else
+            vim.lsp.buf.format({ bufnr = args.buf, async = true })
+        end
     end,
 })
-
