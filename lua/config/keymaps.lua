@@ -35,15 +35,50 @@ harpoon:setup()
 vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
 vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
 
--- Toggle previous & next buffers stored within Harpoon list
-vim.keymap.set("n", "<S-h>", function() harpoon:list():prev() end)
-vim.keymap.set("n", "<S-l>", function() harpoon:list():next() end)
-
 -- NEOTREE
 vim.keymap.set("n", "<leader>g", ":Neotree filesystem reveal toggle<CR>", { desc = "Toggle Neotree" })
 
 -- LSP Keymaps
 -- LSP Keymaps (put this AFTER your plugin specs)
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
+    callback = function(ev)
+        local opts = function(desc)
+            return { buffer = ev.buf, noremap = true, silent = true, desc = desc }
+        end
+
+        -- Go to definition
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("Go to definition"))
+
+        -- Hover docs (second K focuses the float so you can scroll with j/k or C-d/C-u)
+        vim.keymap.set("n", "K", function()
+            for _, win in ipairs(vim.api.nvim_list_wins()) do
+                if vim.api.nvim_win_get_config(win).relative ~= "" then
+                    vim.api.nvim_set_current_win(win)
+                    return
+                end
+            end
+            vim.lsp.buf.hover()
+        end, opts("Hover / focus float"))
+
+        -- Rename symbol
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts("Rename symbol"))
+
+        -- Code actions
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("Code action"))
+
+        -- References
+        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts("Find references"))
+
+        -- Format
+        vim.keymap.set("n", "<leader>f", function()
+            vim.lsp.buf.format({ async = true })
+        end, opts("Format buffer"))
+    end,
+})
+
+--[[
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("UserLspConfig", { clear = true }),
     callback = function(ev)
@@ -59,3 +94,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, opts)
     end,
 })
+]]

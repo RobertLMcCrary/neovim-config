@@ -20,8 +20,21 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<C-Space>"] = cmp.mapping.complete(),
+
+                    -- Tab confirms/pastes the currently selected item
+                    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+
+                    -- Select prev/next item
+                    ["<S-j>"] = cmp.mapping.select_next_item(),
+                    ["<S-k>"] = cmp.mapping.select_prev_item(),
+
+                    -- Abort/close the menu
+                    ["<S-e>"] = cmp.mapping.abort(),
+
+                    -- Scroll docs
+                    ["<S-b>"] = cmp.mapping.scroll_docs(-4),
+                    ["<S-f>"] = cmp.mapping.scroll_docs(4),
+
                 }),
                 sources = {
                     { name = "nvim_lsp" },
