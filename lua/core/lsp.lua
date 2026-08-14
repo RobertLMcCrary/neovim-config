@@ -11,7 +11,7 @@ local servers = {
     { name = "svelte",        cmd = "svelteserver" },
     { name = "html",          cmd = "vscode-html-language-server" },
     { name = "cssls",         cmd = "vscode-css-language-server" },
-    { name = "nil_ls",        cmd = "nil" },
+    { name = "nixd",          cmd = "nixd" },
     { name = "elixirls",      cmd = "elixir-ls" },
     { name = "sourcekit-lsp", cmd = "sourcekit-lsp" },
     { name = "pyright",       cmd = "pyright-langserver" },

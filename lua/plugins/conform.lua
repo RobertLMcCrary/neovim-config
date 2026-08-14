@@ -3,7 +3,7 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-                nix = { "nixpkgs_fmt" },
+                nix = { "nixfmt" },
                 --elixir = { "mix" },
                 --heex = { "mix" },
                 --eex = { "mix" },

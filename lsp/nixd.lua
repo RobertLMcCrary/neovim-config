@@ -1,9 +1,9 @@
 return {
-    cmd = { "nil" },
+    cmd = { "nixd" },
     filetypes = { "nix" },
     root_markers = { "flake.nix", "shell.nix", "default.nix", ".git" },
     settings = {
-        ["nil"] = {
+        nixd = {
             formatting = {
                 command = { "nixfmt" },
             },
