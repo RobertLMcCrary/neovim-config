@@ -1,7 +1,15 @@
 return {
     cmd = { "jdtls" },
     filetypes = { "java" },
-    root_markers = { "pom.xml", "build.gradle", "build.gradle.kts", ".git" },
+    -- Standalone snippet folders (no pom.xml/build.gradle) have no real
+    -- project root, so fall back to the file's own directory instead of
+    -- climbing to the monorepo's top-level .git -- otherwise jdtls expects
+    -- every file's package to mirror its full path from the repo root.
+    root_dir = function(bufnr, on_dir)
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+        local build_root = vim.fs.root(fname, { "pom.xml", "build.gradle", "build.gradle.kts" })
+        on_dir(build_root or vim.fs.dirname(fname))
+    end,
     settings = {
         java = {
             eclipse = { downloadSources = true },
