@@ -16,6 +16,7 @@ local servers = {
     { name = "sourcekit-lsp", cmd = "sourcekit-lsp" },
     { name = "pyright",       cmd = "pyright-langserver" },
     { name = "jdtls",         cmd = "jdtls" },
+    { name = "nushell",       cmd = "nu" },
 }
 
 for _, server in ipairs(servers) do

@@ -11,6 +11,7 @@ return {
             "elixir", "heex", "eex",
             "lua", "rust", "go",
             "typescript", "javascript", "css", "html", "svelte",
+            "nu",
         }
         require("nvim-treesitter.install").install(parsers, { summary = false })
 
