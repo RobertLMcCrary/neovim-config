@@ -14,9 +14,10 @@ local servers = {
     { name = "nixd",          cmd = "nixd" },
     { name = "elixirls",      cmd = "elixir-ls" },
     { name = "sourcekit-lsp", cmd = "sourcekit-lsp" },
-    { name = "pyright",       cmd = "pyright-langserver" },
+    { name = "basedpyright",  cmd = "basedpyright-langserver" },
     { name = "jdtls",         cmd = "jdtls" },
     { name = "nushell",       cmd = "nu" },
+    { name = "sqls",          cmd = "sqls" },
 }
 
 for _, server in ipairs(servers) do
