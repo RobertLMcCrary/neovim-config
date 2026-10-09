@@ -1,1 +1,1 @@
-return require("themes.kanagawa-paper")
+return require("themes.bamboo")
