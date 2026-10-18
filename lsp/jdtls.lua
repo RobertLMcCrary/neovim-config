@@ -1,5 +1,24 @@
 return {
-    cmd = { "jdtls" },
+    -- The Nix jdtls launcher chooses its default workspace from only the
+    -- process working-directory basename. Since Neovim is usually launched
+    -- from ~/School, unrelated Java folders otherwise share one workspace
+    -- and can corrupt each other's JDT index. Give every resolved root its
+    -- own stable workspace instead.
+    cmd = function(dispatchers, config)
+        local workspace = vim.fs.joinpath(
+            vim.fn.stdpath("cache"),
+            "jdtls",
+            vim.fn.sha256(config.root_dir)
+        )
+
+        vim.fn.mkdir(workspace, "p")
+
+        return vim.lsp.rpc.start(
+            { "jdtls", "-data", workspace },
+            dispatchers,
+            { cwd = config.root_dir }
+        )
+    end,
     filetypes = { "java" },
     -- Standalone snippet folders (no pom.xml/build.gradle) have no real
     -- project root, so fall back to the file's own directory instead of
